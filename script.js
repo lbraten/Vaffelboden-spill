@@ -1,4 +1,4 @@
-let penger = 100;
+let penger = 10;
 let kostnad = 5;
 let varerPaLager = 0;
 let button = document.querySelector(".lageKnapp");
@@ -6,6 +6,7 @@ let viserGjeldenePris = 5;
 let priceInput = document.getElementById("prisInput");
 let dobbeltjernOppgradering = false;
 let antallVaflerPerRunde = 1;
+let lagerCooldown = false;
 
 let ansatte = 0;
 let lonnPerAnsatt = 35;
@@ -20,6 +21,7 @@ let sisteLonnAdvarsel = 0;
 
 const maal = [
     { id: "selg20", tekst: "Selg 20 vafler", type: "sell", target: 20 },
+    { id: "selg500", tekst: "Selg 500 vafler", type: "sell", target: 500 },
     { id: "kapital1000", tekst: "Ha 1000 NOK", type: "money", target: 1000 },
     { id: "ansett1", tekst: "Ansett 1 ansatt", type: "staff", target: 1 },
     { id: "nivå5", tekst: "Nå nivå 5", type: "level", target: 5 }
@@ -33,9 +35,11 @@ const kundeTyper = [
 ];
 
 function lagVaffel() {
+    lagerCooldown = true;
     button.disabled = true;
     setTimeout(function () {
-        button.disabled = false;
+        lagerCooldown = false;
+        oppdaterUi();
     }, 2000);
     if (penger >= kostnad) {
         varerPaLager += antallVaflerPerRunde;
@@ -198,10 +202,10 @@ function trekkKunde() {
 }
 
 function kalkulerSalgsSjanse(kunde) {
-    const base = 60 + (reputation - 50) * 0.4;
+    const base = 78 + (reputation - 50) * 0.5;
     const prisMargin = Math.max(0, viserGjeldenePris - kostnad);
-    const prisStraff = prisMargin * 4;
-    const toleranseBonus = (kunde.priceTolerance - 1) * 20;
+    const prisStraff = prisMargin * 1.6;
+    const toleranseBonus = (kunde.priceTolerance - 1) * 25;
     let sjanse = base - prisStraff + toleranseBonus;
     sjanse = Math.max(5, Math.min(95, sjanse));
     return sjanse;
@@ -243,6 +247,9 @@ function oppdaterUi() {
     document.getElementById("viserAntallKroner").textContent = `Totalkapital: ${Math.floor(penger)}`;
     document.getElementById("viserPrisIngredienser").textContent = `Pris for ingredienser: ${kostnad} NOK pr/stk`;
     document.getElementById("viserVarebeholdning").textContent = `${varerPaLager} vafler på lager`;
+    if (button) {
+        button.disabled = lagerCooldown || penger < kostnad;
+    }
     if (priceInput) {
         priceInput.value = viserGjeldenePris;
         priceInput.min = kostnad;
