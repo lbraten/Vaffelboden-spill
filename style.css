@@ -1,27 +1,36 @@
- :root {
-    --color-bg: rgb(7, 22, 39);
-    --color-surface: rgb(15, 33, 51);
-    --color-surface-strong: rgb(21, 44, 66);
-    --color-border: #243242;
-    --color-text: rgb(243, 243, 246);
-    --color-text-muted: rgba(243, 243, 246, 0.7);
-    --color-accent: #0df2d7;
-    --color-accent-strong: #9efaef;
-    --color-success: #23d18b;
-    --color-danger: #ff5b5b;
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@1,2&display=swap");
 
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-
-    --shadow-sm: 0 4px 12px rgba(5, 14, 22, 0.35);
-    --shadow-md: 0 10px 24px rgba(5, 14, 22, 0.4);
-
-    --space-1: 6px;
-    --space-2: 10px;
-    --space-3: 16px;
-    --space-4: 24px;
-    --space-5: 32px;
+:root {
+    --font-satoshi: "Satoshi";
+    --font-open-sans: "Open Sans";
+    --lbc-base: #071627;
+    --lbc-base-1: #0f2133;
+    --lbc-base-2: #0a1c2e;
+    --lbc-base-3: #0f2133;
+    --lbc-base-dimmed: #243242;
+    --lbc-base-c: #f3f3f6;
+    --lbc-base-c-muted: #d3d4df;
+    --lbc-base-c-theme: #0df2d7;
+    --lbc-theme: #0df2d7;
+    --lbc-theme-strong: #64f7e6;
+    --lbc-success: #00f597;
+    --lbc-danger: #ff4b33;
+    --lb-radius-xs: 6px;
+    --lb-radius-s: 10px;
+    --lb-radius-m: 14px;
+    --lb-radius-l: 18px;
+    --lb-radius-full: 999px;
+    --lbs6: 6px;
+    --lbs8: 8px;
+    --lbs12: 12px;
+    --lbs16: 16px;
+    --lbs20: 20px;
+    --lbs24: 24px;
+    --lbs32: 32px;
+    --lbs40: 40px;
+    --lb-shadow-sm: 0 6px 14px rgba(15, 23, 42, 0.08);
+    --lb-shadow-md: 0 18px 36px rgba(15, 23, 42, 0.12);
 }
 
 * {
@@ -30,230 +39,265 @@
 
 body {
     margin: 0;
-    background-color: var(--color-bg);
-    color: var(--color-text);
-    font-family: "Inter", "Poppins", "Roboto", system-ui, -apple-system, sans-serif;
-    padding: var(--space-5) var(--space-4);
+    background-color: var(--lbc-base);
+    color: var(--lbc-base-c);
+    font-family: var(--font-open-sans, "Open Sans"), "Open Sans", "Segoe UI", sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: var(--lbs40) var(--lbs24);
 }
 
 h1, h2 {
-    color: var(--color-text);
-    margin: 0 0 var(--space-2);
+    margin: 0 0 var(--lbs8);
+    font-family: var(--font-satoshi, "Satoshi"), "Segoe UI", sans-serif;
+    color: var(--lbc-base-c);
 }
+
 .overskrift {
     text-align: center;
-    font-size: clamp(2rem, 4vw, 3rem);
-    letter-spacing: 0.5px;
-    margin-bottom: var(--space-5);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    letter-spacing: 0.4px;
+    margin-bottom: var(--lbs32);
+    font-weight: 700;
 }
+
 .beholder {
     width: min(100%, 980px);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--space-4);
-    margin-bottom: var(--space-5);
-    background-color: var(--color-surface);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-md);
+    padding: var(--lbs24);
+    margin-bottom: var(--lbs32);
+    background-color: var(--lbc-base-1);
+    border-radius: var(--lb-radius-l);
+    border: 1px solid var(--lbc-base-3);
+    box-shadow: var(--lb-shadow-md);
+    gap: var(--lbs16);
 }
+
 button {
-    background-color: var(--color-accent);
-    color: #04121f;
-    border: none;
-    padding: 14px 28px;
+    background-color: var(--lbc-theme);
+    color: var(--lbc-base);
+    border: 1px solid transparent;
+    padding: 12px 24px;
     text-align: center;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 600;
-    margin: 4px 2px;
     cursor: pointer;
-    transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
-    border-radius: var(--radius-md);
-    box-shadow: 0 6px 12px rgba(13, 242, 215, 0.2);
+    transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease, border-color 120ms ease;
+    border-radius: var(--lb-radius-m);
+    box-shadow: var(--lb-shadow-sm);
+}
 
-}
 button:hover {
-    background-color: var(--color-accent-strong);
+    background-color: var(--lbc-theme-strong);
     transform: translateY(-1px);
-    box-shadow: 0 8px 18px rgba(13, 242, 215, 0.3);
 }
-.prisOppKnapp   {
+
+button:focus-visible {
+    outline: 2px dotted var(--lbc-base-c);
+    outline-offset: 2px;
+}
+
+button:disabled {
+    background-color: var(--lbc-base-2);
+    color: var(--lbc-base-c-muted);
+    border-color: var(--lbc-base-3);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.prisOppKnapp {
     width: 100px;
-    height: 70px;
+    height: 64px;
 }
-.prisNedKnapp   {
+
+.prisNedKnapp {
     width: 100px;
-    height: 70px;
+    height: 64px;
 }
+
 #solgtTekst {
-    color: var(--color-success);
-    font-size: 1.2rem;
+    color: var(--lbc-success);
+    font-size: 1.1rem;
 }
+
 .skrift {
     text-align: center;
-    /* padding: 20px; */
-    /* padding-top: 20px; */
     width: min(100%, 980px);
-    margin-bottom: var(--space-5);
+    margin-bottom: var(--lbs32);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: var(--space-4);
+    gap: var(--lbs24);
 }
+
 .dapa,
 .info,
 .Notifikasjonspanel {
-    background-color: var(--color-surface);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-sm);
-    padding: var(--space-4);
+    background-color: var(--lbc-base-1);
+    border-radius: var(--lb-radius-l);
+    border: 1px solid var(--lbc-base-3);
+    box-shadow: var(--lb-shadow-sm);
+    padding: var(--lbs24);
 }
+
 .lageKnappPlassering {
     text-align: center;
     width: min(100%, 980px);
 }
+
 .actionButtons {
     width: min(100%, 980px);
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: var(--space-3);
+    gap: var(--lbs16);
     flex-wrap: wrap;
 }
-.lageKnapp{
+
+.lageKnapp {
     width: min(260px, 100%);
-    height: 62px;
-    margin: var(--space-3);
+    height: 60px;
+    margin: var(--lbs16);
 }
+
 .oppgraderinger {
     text-align: center;
     width: min(100%, 980px);
-    margin-top: var(--space-4);
-    background-color: var(--color-surface);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-md);
-    padding: var(--space-4);
+    margin-top: var(--lbs24);
+    background-color: var(--lbc-base-1);
+    border-radius: var(--lb-radius-l);
+    border: 1px solid var(--lbc-base-3);
+    box-shadow: var(--lb-shadow-md);
+    padding: var(--lbs24);
 }
+
 .oppgraderingerGrid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-3);
-    margin-top: var(--space-3);
+    gap: var(--lbs16);
+    margin-top: var(--lbs16);
 }
+
 .oppgraderingsKnapp {
     width: 100%;
-    height: 62px;
+    height: 60px;
     margin: 0;
 }
-.oppgraderingsKnapp:disabled {
-    background-color: var(--color-surface-strong);
-    color: var(--color-text-muted);
-    cursor: not-allowed;
-    box-shadow: none;
-    transform: none;
-}
+
 .dobbeltjern {
     width: min(600px, 100%);
-    height: 62px;
-    margin: var(--space-3);
+    height: 60px;
+    margin: var(--lbs16);
 }
+
 .hjelpp {
     width: min(260px, 100%);
-    height: 62px;
-    margin: var(--space-3);
+    height: 60px;
+    margin: var(--lbs16);
 }
+
 .hjelpPlassering {
     text-align: center;
     width: min(100%, 980px);
 }
-.Notifikasjonspanel{
+
+.Notifikasjonspanel {
     text-align: center;
 }
+
 .kundekort {
-    margin-top: var(--space-3);
-    padding: var(--space-3);
-    background: var(--color-surface-strong);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
+    margin-top: var(--lbs16);
+    padding: var(--lbs16);
+    background: var(--lbc-base-2);
+    border: 1px solid var(--lbc-base-3);
+    border-radius: var(--lb-radius-m);
     text-align: left;
 }
 
 .kundekort p {
-    margin: 0 0 var(--space-2);
-    color: var(--color-text-muted);
+    margin: 0 0 var(--lbs8);
+    color: var(--lbc-base-c-muted);
 }
 
 .malListe {
     list-style: none;
     padding: 0;
-    margin: var(--space-3) 0 0;
+    margin: var(--lbs16) 0 0;
     display: grid;
-    gap: var(--space-2);
+    gap: var(--lbs12);
     text-align: left;
 }
 
 .malListe li {
-    padding: var(--space-2) var(--space-3);
-    background: var(--color-surface-strong);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
+    padding: var(--lbs12) var(--lbs16);
+    background: var(--lbc-base-2);
+    border: 1px solid var(--lbc-base-3);
+    border-radius: var(--lb-radius-m);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-2);
+    gap: var(--lbs12);
 }
 
 .malListe .badge {
     font-size: 0.85rem;
     padding: 4px 10px;
-    border-radius: 999px;
-    border: 1px solid var(--color-border);
-    color: var(--color-text-muted);
+    border-radius: var(--lb-radius-full);
+    border: 1px solid var(--lbc-base-3);
+    color: var(--lbc-base-c-muted);
+    background: var(--lbc-base-1);
+    font-weight: 600;
 }
 
 .malListe .badge.fullfort {
-    color: #04121f;
-    background: var(--color-accent);
+    color: #ffffff;
+    background: var(--lbc-theme);
     border-color: transparent;
 }
+
 .notifikasjonsstyling {
-    margin-top: var(--space-4);
-    color: var(--color-success);
+    margin-top: var(--lbs24);
+    color: var(--lbc-success);
 }
+
 .notifikasjonsstylingNegativ {
-    margin-top: var(--space-4);
-    color: var(--color-danger);
+    margin-top: var(--lbs24);
+    color: var(--lbc-danger);
 }
+
 .positiv {
-    color: var(--color-success);
+    color: var(--lbc-success);
 }
 
 .negativ {
-    color: var(--color-danger);
+    color: var(--lbc-danger);
 }
 
 #viserAntallKroner,
 #viserPrisIngredienser,
 #viserVarebeholdning,
-#viserGjeldendePris {
-    color: var(--color-text-muted);
-    font-weight: 500;
+#viserGjeldendePris,
+#viserNivaa,
+#viserXp,
+#viserAnsatte,
+#viserLonn,
+#viserProduksjon {
+    color: var(--lbc-base-c-muted);
+    font-weight: 600;
 }
 
 @media (max-width: 720px) {
     .beholder {
         flex-direction: column;
-        gap: var(--space-3);
+        gap: var(--lbs16);
     }
 
     .oppgraderingerGrid {
