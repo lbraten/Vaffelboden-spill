@@ -23,11 +23,35 @@
             <h2 id="viserVarebeholdning">
                 0 vafler på lager
             </h2>
+            <h2 id="viserNivaa">
+                Nivå: 1
+            </h2>
+            <h2 id="viserXp">
+                XP: 0 / 50
+            </h2>
+            <h2 id="viserAnsatte">
+                Ansatte: 0
+            </h2>
+            <h2 id="viserLonn">
+                Lønn per min: 0 NOK
+            </h2>
+            <h2 id="viserProduksjon">
+                Produksjon: 0 vafler/s
+            </h2>
         </div>
         <div class="dapa">
             <h1>Notifikasjoner</h2>
             <h2 id="notifi" class="notifikasjonsstyling">Du har ingen notifikasjoner</h2>
             <h2 id="notifiNegativ" class="notifikasjonsstylingNegativ"></h2>
+            <div class="kundekort">
+                <h2>Kundesystem</h2>
+                <p id="kundeProfil">Kunde: -</p>
+                <p id="kundeEttersporsel">Etterspørsel: -</p>
+            </div>
+        </div>
+        <div class="Notifikasjonspanel">
+            <h2>Mål</h2>
+            <ul id="malListe" class="malListe"></ul>
         </div>
     </div>
 
@@ -42,16 +66,20 @@
             +
         </button>
     </div>
-    <div class="lageKnappPlassering">
+    <div class="actionButtons">
         <button class="lageKnapp" onclick="lagVaffel()">
             Lag vaffel
         </button>
+        <button id="hjelp" class="hjelpp">Hjelp</button>
     </div>
     <div class="oppgraderinger">
-        <button id="dobbeljernOppgradering" class="dobbeltjern" onclick="kjopOppgradering('dobbeljern')">Dobbelt-jern oppgradering (500 NOK)</button>
-    </div>
-    <div class="hjelpPlassering">
-        <button id="hjelp" class="hjelpp">Hjelp</button>
+        <h2>Oppgraderinger</h2>
+        <div class="oppgraderingerGrid">
+            <button id="ansettKnapp" class="oppgraderingsKnapp">Ansett medarbeider (1500 NOK + lønn)</button>
+            <button id="dobbeljernOppgradering" class="oppgraderingsKnapp" onclick="kjopOppgradering('dobbeljern')">Dobbelt-jern (500 NOK)</button>
+            <button class="oppgraderingsKnapp" disabled>(Kommer snart)</button>
+            <button class="oppgraderingsKnapp" disabled>(Kommer snart)</button>
+        </div>
     </div>
 
 <!-- Denne teksten skal vises en kort stund når en vaffel selges -->

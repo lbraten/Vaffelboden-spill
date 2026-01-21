@@ -1,49 +1,90 @@
-body {
-    background-color: #f2f2f2;
-    font-family: 'Roboto', sans-serif;
-    color: #333;
-    padding: 20px;
-    font-family: 'Poppins', sans-serif;
-    font-family: 'Roboto Slab', serif;
+ :root {
+    --color-bg: rgb(7, 22, 39);
+    --color-surface: rgb(15, 33, 51);
+    --color-surface-strong: rgb(21, 44, 66);
+    --color-border: #243242;
+    --color-text: rgb(243, 243, 246);
+    --color-text-muted: rgba(243, 243, 246, 0.7);
+    --color-accent: #0df2d7;
+    --color-accent-strong: #9efaef;
+    --color-success: #23d18b;
+    --color-danger: #ff5b5b;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+
+    --shadow-sm: 0 4px 12px rgba(5, 14, 22, 0.35);
+    --shadow-md: 0 10px 24px rgba(5, 14, 22, 0.4);
+
+    --space-1: 6px;
+    --space-2: 10px;
+    --space-3: 16px;
+    --space-4: 24px;
+    --space-5: 32px;
 }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: "Inter", "Poppins", "Roboto", system-ui, -apple-system, sans-serif;
+    padding: var(--space-5) var(--space-4);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 h1, h2 {
-    color: #444;
+    color: var(--color-text);
+    margin: 0 0 var(--space-2);
 }
 .overskrift {
     text-align: center;
-    font-size: 3rem;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: 0.5px;
+    margin-bottom: var(--space-5);
 }
 .beholder {
+    width: min(100%, 980px);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    margin-bottom: 40px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-    margin-left: 10px;
-    margin-right: 10px;
+    padding: var(--space-4);
+    margin-bottom: var(--space-5);
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
 }
 button {
-    background-color: #46dadf;
-    color: #444;
+    background-color: var(--color-accent);
+    color: #04121f;
     border: none;
-    padding: 15px 32px;
+    padding: 14px 28px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 600;
     margin: 4px 2px;
     cursor: pointer;
-    transition: 0.3s;
-    border-radius: 10px;
+    transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+    border-radius: var(--radius-md);
+    box-shadow: 0 6px 12px rgba(13, 242, 215, 0.2);
 
 }
 button:hover {
-    transition: 0.3s;
-    background-color: #3fc9ce;
-    font-weight:bolder;
+    background-color: var(--color-accent-strong);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(13, 242, 215, 0.3);
 }
 .prisOppKnapp   {
     width: 100px;
@@ -54,76 +95,172 @@ button:hover {
     height: 70px;
 }
 #solgtTekst {
-    color: green;
-    font-size: 24px;
+    color: var(--color-success);
+    font-size: 1.2rem;
 }
 .skrift {
     text-align: center;
     /* padding: 20px; */
     /* padding-top: 20px; */
-    margin-bottom: 30px;
+    width: min(100%, 980px);
+    margin-bottom: var(--space-5);
     display: grid;
-    grid-template-columns: 1fr 1fr;  
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-4);
 }
-.dapa {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-    grid-column: 2;
-    margin: 10px;
-}
-.info {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-    grid-column: 1;
-    margin: 10px;
+.dapa,
+.info,
+.Notifikasjonspanel {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-4);
 }
 .lageKnappPlassering {
     text-align: center;
+    width: min(100%, 980px);
+}
+.actionButtons {
+    width: min(100%, 980px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
 }
 .lageKnapp{
-    width: 200px;
-    height: 70px;
-    margin: 15px;
+    width: min(260px, 100%);
+    height: 62px;
+    margin: var(--space-3);
 }
 .oppgraderinger {
-    text-align: center; 
+    text-align: center;
+    width: min(100%, 980px);
+    margin-top: var(--space-4);
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-4);
+}
+.oppgraderingerGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+    margin-top: var(--space-3);
+}
+.oppgraderingsKnapp {
+    width: 100%;
+    height: 62px;
+    margin: 0;
+}
+.oppgraderingsKnapp:disabled {
+    background-color: var(--color-surface-strong);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
 }
 .dobbeltjern {
-    width: 527px;
-    height: 70px;
-    margin: 15px;;
+    width: min(600px, 100%);
+    height: 62px;
+    margin: var(--space-3);
 }
 .hjelpp {
-    width: 150px;
-    height: 70px;
-    margin:15px;
+    width: min(260px, 100%);
+    height: 62px;
+    margin: var(--space-3);
 }
 .hjelpPlassering {
     text-align: center;
+    width: min(100%, 980px);
 }
 .Notifikasjonspanel{
     text-align: center;
-    padding: 20px;
-    padding-top: 20px;
-    margin-bottom: 30px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+.kundekort {
+    margin-top: var(--space-3);
+    padding: var(--space-3);
+    background: var(--color-surface-strong);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    text-align: left;
+}
+
+.kundekort p {
+    margin: 0 0 var(--space-2);
+    color: var(--color-text-muted);
+}
+
+.malListe {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-3) 0 0;
+    display: grid;
+    gap: var(--space-2);
+    text-align: left;
+}
+
+.malListe li {
+    padding: var(--space-2) var(--space-3);
+    background: var(--color-surface-strong);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+}
+
+.malListe .badge {
+    font-size: 0.85rem;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+}
+
+.malListe .badge.fullfort {
+    color: #04121f;
+    background: var(--color-accent);
+    border-color: transparent;
 }
 .notifikasjonsstyling {
-    margin-top: 70px;
-    color: green;
+    margin-top: var(--space-4);
+    color: var(--color-success);
 }
 .notifikasjonsstylingNegativ {
-    margin-top: 70px;
-    color: red;
+    margin-top: var(--space-4);
+    color: var(--color-danger);
 }
 .positiv {
-    color: green;
+    color: var(--color-success);
 }
 
 .negativ {
-    color: red;
+    color: var(--color-danger);
+}
+
+#viserAntallKroner,
+#viserPrisIngredienser,
+#viserVarebeholdning,
+#viserGjeldendePris {
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+@media (max-width: 720px) {
+    .beholder {
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .oppgraderingerGrid {
+        grid-template-columns: 1fr;
+    }
+
+    button {
+        width: 100%;
+    }
 }
