@@ -302,6 +302,7 @@ button:disabled {
     align-items: center;
     justify-content: space-between;
     gap: var(--lbs12);
+    height: 70px
 }
 
 .malListe .badge {
