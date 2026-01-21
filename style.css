@@ -127,6 +127,21 @@ button:disabled {
     height: 64px;
 }
 
+.prisOppKnapp,
+.prisNedKnapp,
+.hjelpp {
+    background-color: var(--lbc-base-1);
+    color: var(--lbc-base-c);
+    border: 1px solid var(--lbc-theme);
+}
+
+.prisOppKnapp:hover,
+.prisNedKnapp:hover,
+.hjelpp:hover {
+    background-color: var(--lbc-base-1);
+    border-width: 2px;
+}
+
 #solgtTekst {
     color: var(--lbc-success);
     font-size: 1.1rem;
@@ -252,11 +267,15 @@ button:disabled {
 
 .malListe .badge {
     font-size: 0.85rem;
-    padding: 4px 10px;
+    padding: 4px 12px;
     border-radius: var(--lb-radius-full);
     color: var(--warning);
     background: var(--warning-fade);
     font-weight: 600;
+    min-width: 80px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .malListe .badge.fullfort {
