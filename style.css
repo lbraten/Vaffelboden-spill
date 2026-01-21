@@ -15,7 +15,10 @@
     --lbc-theme: #0df2d7;
     --lbc-theme-strong: #64f7e6;
     --lbc-success: #00f597;
+    --lbc-success-fade: #007548;
     --lbc-danger: #ff4b33;
+    --warning-fade: #4d3200;
+    --warning: #ffdb70;
     --lb-radius-xs: 6px;
     --lb-radius-s: 10px;
     --lb-radius-m: 14px;
@@ -71,7 +74,7 @@ h1, h2 {
     padding: var(--lbs24);
     margin-bottom: var(--lbs32);
     background-color: var(--lbc-base-1);
-    border-radius: var(--lb-radius-l);
+    border-radius: var(--lb-radius-m);
     border: 1px solid var(--lbc-base-3);
     box-shadow: var(--lb-shadow-md);
     gap: var(--lbs16);
@@ -142,7 +145,7 @@ button:disabled {
 .info,
 .Notifikasjonspanel {
     background-color: var(--lbc-base-1);
-    border-radius: var(--lb-radius-l);
+    border-radius: var(--lb-radius-m);
     border: 1px solid var(--lbc-base-3);
     box-shadow: var(--lb-shadow-sm);
     padding: var(--lbs24);
@@ -173,7 +176,7 @@ button:disabled {
     width: min(100%, 980px);
     margin-top: var(--lbs24);
     background-color: var(--lbc-base-1);
-    border-radius: var(--lb-radius-l);
+    border-radius: var(--lb-radius-m);
     border: 1px solid var(--lbc-base-3);
     box-shadow: var(--lb-shadow-md);
     padding: var(--lbs24);
@@ -251,15 +254,14 @@ button:disabled {
     font-size: 0.85rem;
     padding: 4px 10px;
     border-radius: var(--lb-radius-full);
-    border: 1px solid var(--lbc-base-3);
-    color: var(--lbc-base-c-muted);
-    background: var(--lbc-base-1);
+    color: var(--warning);
+    background: var(--warning-fade);
     font-weight: 600;
 }
 
 .malListe .badge.fullfort {
-    color: #ffffff;
-    background: var(--lbc-theme);
+    color: var(--lbc-success);
+    background: var(--lbc-success-fade);
     border-color: transparent;
 }
 
