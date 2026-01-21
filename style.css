@@ -9,6 +9,8 @@
     --lbc-base-2: #0a1c2e;
     --lbc-base-3: #0f2133;
     --lbc-base-dimmed: #243242;
+    --lbc-base-c-disabled: #495869;
+    --lbc-base-disabled: #44556a;
     --lbc-base-c: #f3f3f6;
     --lbc-base-c-muted: #d3d4df;
     --lbc-base-c-theme: #0df2d7;
@@ -100,7 +102,7 @@ button {
 
 button:hover {
     background-color: var(--lbc-theme-strong);
-    transform: translateY(-1px);
+    transform: none;
 }
 
 button:focus-visible {
@@ -110,8 +112,7 @@ button:focus-visible {
 
 button:disabled {
     background-color: var(--lbc-base-2);
-    color: var(--lbc-base-c-muted);
-    border-color: var(--lbc-base-3);
+    color: var(--lbc-base-disabled);
     cursor: not-allowed;
     box-shadow: none;
     transform: none;
@@ -133,6 +134,44 @@ button:disabled {
     background-color: var(--lbc-base-1);
     color: var(--lbc-base-c);
     border: 1px solid var(--lbc-theme);
+}
+
+.prisInputWrap {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--lbs8);
+    padding: var(--lbs20) var(--lbs12);
+    background: var(--lbc-base-2);
+    border: 1px solid var(--lbc-base-3);
+    border-radius: var(--lb-radius-m);
+    box-shadow: var(--lb-shadow-sm);
+}
+
+.prisInput {
+    width: 120px;
+    background: transparent;
+    border: none;
+    color: var(--lbc-base-c);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+    outline: none;
+}
+
+.prisInput::-webkit-outer-spin-button,
+.prisInput::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.prisInput[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.prisSuffix {
+    font-size: 1rem;
+    color: var(--lbc-base-c-muted);
+    font-weight: 600;
 }
 
 .prisOppKnapp:hover,

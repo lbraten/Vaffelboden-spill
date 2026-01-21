@@ -3,6 +3,7 @@ let kostnad = 5;
 let varerPaLager = 0;
 let button = document.querySelector(".lageKnapp");
 let viserGjeldenePris = 5;
+let priceInput = document.getElementById("prisInput");
 let dobbeltjernOppgradering = false;
 let antallVaflerPerRunde = 1;
 
@@ -45,19 +46,42 @@ function lagVaffel() {
         notify("Ikke nok penger til å lage vafler!", "negative");
     }
 }
+function normaliserPris(verdi) {
+    const parsed = Number.parseInt(verdi, 10);
+    if (Number.isNaN(parsed)) {
+        return kostnad;
+    }
+    return Math.max(kostnad, parsed);
+}
+
 function oppdaterPris() {
-    document.getElementById("viserGjeldendePris").textContent = viserGjeldenePris + " NOK";
+    if (priceInput) {
+        priceInput.value = viserGjeldenePris;
+    }
+}
+
+function settPris(nyPris) {
+    viserGjeldenePris = normaliserPris(nyPris);
+    oppdaterPris();
 }
 document.getElementById("prisNedKnapp").addEventListener("click", function() {
-    viserGjeldenePris = Math.max(viserGjeldenePris - 1, kostnad);
-    oppdaterPris();
+    settPris(viserGjeldenePris - 1);
     oppdaterUi();
 });
 document.getElementById("prisOppKnapp").addEventListener("click", function() {
-    viserGjeldenePris++;
-    oppdaterPris();
+    settPris(viserGjeldenePris + 1);
     oppdaterUi();
 });
+if (priceInput) {
+    priceInput.addEventListener("input", function() {
+        settPris(priceInput.value);
+        oppdaterUi();
+    });
+    priceInput.addEventListener("blur", function() {
+        settPris(priceInput.value);
+        oppdaterUi();
+    });
+}
 document.addEventListener("DOMContentLoaded", function() {
     setInterval(function() {
         forsokSelgVaffel();
@@ -219,7 +243,10 @@ function oppdaterUi() {
     document.getElementById("viserAntallKroner").textContent = `Totalkapital: ${Math.floor(penger)}`;
     document.getElementById("viserPrisIngredienser").textContent = `Pris for ingredienser: ${kostnad} NOK pr/stk`;
     document.getElementById("viserVarebeholdning").textContent = `${varerPaLager} vafler på lager`;
-    document.getElementById("viserGjeldendePris").textContent = `${viserGjeldenePris} NOK`;
+    if (priceInput) {
+        priceInput.value = viserGjeldenePris;
+        priceInput.min = kostnad;
+    }
     document.getElementById("viserNivaa").textContent = `Nivå: ${niva}`;
     document.getElementById("viserXp").textContent = `XP: ${Math.floor(xp)} / ${xpForNesteNiva(niva)}`;
     document.getElementById("viserAnsatte").textContent = `Ansatte: ${ansatte}`;
@@ -227,10 +254,12 @@ function oppdaterUi() {
     document.getElementById("viserProduksjon").textContent = `Produksjon: ${(ansatte * produksjonPerAnsatt).toFixed(2)} vafler/s`;
 
     const ansettKnapp = document.getElementById("ansettKnapp");
-    ansettKnapp.disabled = niva < 2;
+    const ansettPris = 1500;
+    ansettKnapp.disabled = niva < 2 || penger < ansettPris;
 
     const dobbelKnapp = document.getElementById("dobbeljernOppgradering");
-    dobbelKnapp.disabled = niva < 3 || dobbeltjernOppgradering;
+    const dobbelPris = 500;
+    dobbelKnapp.disabled = niva < 3 || dobbeltjernOppgradering || penger < dobbelPris;
 }
 
 function oppdaterMal() {

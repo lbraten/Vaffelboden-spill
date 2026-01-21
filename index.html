@@ -50,22 +50,23 @@
             </div>
         </div>
         <div class="Notifikasjonspanel">
-            <h2>Mål</h2>
+            <h1>Mål</h1>
             <ul id="malListe" class="malListe"></ul>
         </div>
     </div>
 
         <div class="beholder">
-        <button id="prisNedKnapp" class="prisNedKnapp">
-            -
-        </button>
-        <h2 id="viserGjeldendePris">
-            5 NOK
-        </h2>
-        <button id="prisOppKnapp" class="prisOppKnapp">
-            +
-        </button>
-    </div>
+            <button id="prisNedKnapp" class="prisNedKnapp">
+                -
+            </button>
+            <div class="prisInputWrap">
+                <input id="prisInput" class="prisInput" type="number" min="5" step="1" value="5" aria-label="Pris per vaffel">
+                <span class="prisSuffix">NOK</span>
+            </div>
+            <button id="prisOppKnapp" class="prisOppKnapp">
+                +
+            </button>
+        </div>
     <div class="actionButtons">
         <button class="lageKnapp" onclick="lagVaffel()">
             Lag vaffel
